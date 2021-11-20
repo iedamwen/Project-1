@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Price_Must_Be_Lesser_Than</fullName>
+    <active>true</active>
+    <errorConditionFormula>Item_Price__c &lt; 1 || Item_Price__c &gt; 999999</errorConditionFormula>
+    <errorDisplayField>Item_Price__c</errorDisplayField>
+    <errorMessage>The price point is either too large or too small! Must be more than $0 and under $999,999</errorMessage>
+</ValidationRule>

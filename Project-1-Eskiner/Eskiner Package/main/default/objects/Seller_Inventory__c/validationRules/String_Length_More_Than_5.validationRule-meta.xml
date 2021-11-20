@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>String_Length_More_Than_5</fullName>
+    <active>true</active>
+    <description>The string length of inputted names must be more than five characters</description>
+    <errorConditionFormula>LEN(Item_Name__c) &lt; 5</errorConditionFormula>
+    <errorDisplayField>Item_Name__c</errorDisplayField>
+    <errorMessage>Sorry but the name you inputted was too short! Please enter one greater than 5 characters</errorMessage>
+</ValidationRule>

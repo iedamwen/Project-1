@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Seller_Inventory_Link__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Seller_Inventory_Link</label>
+    <referenceTo>Seller_Inventory__c</referenceTo>
+    <relationshipLabel>Shipment_Statuses</relationshipLabel>
+    <relationshipName>Shipment_Statuses</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

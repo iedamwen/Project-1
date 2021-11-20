@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <description>Connects the inputted inventory item information to a record</description>
+        <name>Inventory_Item_Assignment</name>
+        <label>Inventory Item Assignment</label>
+        <locationX>581</locationX>
+        <locationY>352</locationY>
+        <assignmentItems>
+            <assignToReference>ItemToInsert.Item_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Enter_the_name_of_your_item</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ItemToInsert.Item_Price__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Enter_the_pricing</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ItemToInsert.Item_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Choose_what_type_of_item_it_is</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>New_Inventory_Item</targetReference>
+        </connector>
+    </assignments>
+    <dynamicChoiceSets>
+        <name>itemType</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Item_Type__c</picklistField>
+        <picklistObject>Seller_Inventory__c</picklistObject>
+    </dynamicChoiceSets>
+    <interviewLabel>Item Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
+    <label>Item Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>New_Inventory_Item</name>
+        <label>New Inventory Item</label>
+        <locationX>597</locationX>
+        <locationY>509</locationY>
+        <connector>
+            <targetReference>Screen_Created</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Fault_Screen</targetReference>
+        </faultConnector>
+        <inputReference>ItemToInsert</inputReference>
+    </recordCreates>
+    <screens>
+        <name>Create_Inventory_Item</name>
+        <label>Create Inventory Item</label>
+        <locationX>582</locationX>
+        <locationY>188</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Inventory_Item_Assignment</targetReference>
+        </connector>
+        <fields>
+            <name>Enter_the_name_of_your_item</name>
+            <dataType>String</dataType>
+            <fieldText>Enter the name of your item:</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Enter_the_pricing</name>
+            <dataType>Currency</dataType>
+            <fieldText>Enter the pricing:</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <scale>2</scale>
+        </fields>
+        <fields>
+            <name>Choose_what_type_of_item_it_is</name>
+            <choiceReferences>itemType</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Choose what type of item it is:</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Fault_Screen</name>
+        <label>Fault Screen</label>
+        <locationX>977</locationX>
+        <locationY>614</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>fault_call</name>
+            <fieldText>&lt;p&gt;Wrong Input Data! {!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Informs user screen was made</description>
+        <name>Screen_Created</name>
+        <label>Screen Created</label>
+        <locationX>965</locationX>
+        <locationY>298</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>displayMessage</name>
+            <fieldText>&lt;p&gt;The items were added to your inventory, {!ItemToInsert.Item_Name__c} at the pricing point of {!ItemToInsert.Item_Price__c}, can be available for customers to purchase now, thank you! &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Create_Inventory_Item</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>itemName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>itemPrice</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>ItemToInsert</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Seller_Inventory__c</objectType>
+    </variables>
+</Flow>

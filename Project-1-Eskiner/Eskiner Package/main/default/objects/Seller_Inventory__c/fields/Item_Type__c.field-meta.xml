@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Item_Type__c</fullName>
+    <businessOwnerUser>admin@dex403.57900.com.test466</businessOwnerUser>
+    <businessStatus>Active</businessStatus>
+    <externalId>false</externalId>
+    <label>Item Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Custom RGB Keyboards</fullName>
+                <default>false</default>
+                <label>Custom RGB Keyboards</label>
+            </value>
+            <value>
+                <fullName>Custom LED Mouses</fullName>
+                <default>false</default>
+                <label>Custom LED Mouses</label>
+            </value>
+            <value>
+                <fullName>Custom Computer Case</fullName>
+                <default>false</default>
+                <label>Custom Computer Case</label>
+            </value>
+            <value>
+                <fullName>Custom Iphone Case</fullName>
+                <default>false</default>
+                <label>Custom Iphone Case</label>
+            </value>
+            <value>
+                <fullName>Custom PS5 Skin</fullName>
+                <default>false</default>
+                <label>Custom PS5 Skin</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
